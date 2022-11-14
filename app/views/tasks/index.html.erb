@@ -1,0 +1,16 @@
+<h1>My tasks</h1>
+<table>
+  <% @tasks.each do |task| %>
+    <tr>
+      <td> <%= task.completed %> </td>
+      <td> <%= link_to task.title, task_path(task) %> </td>
+      <td> <%= task.details %> </td>
+      <td> <%= link_to "Delete",
+        task_path(task),
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+      %> </td>
+     </tr>
+  <% end %>
+</table>
+
+<%= link_to "new", new_task_path %>
